@@ -1,0 +1,6 @@
+# 현재 폴더에 있는 파일들 stage 올려라
+git add .
+# 현재 stage 버전 2로 저장해라
+git commit -m "ex01"
+# github 서버에 올려라
+git push origin main

@@ -58,7 +58,7 @@ function App() {
       <header>
         <p className="eyebrow">MEMBER REST CLIENT</p>
         <h1>회원 관리 API</h1>
-        <p className="description">Member 테이블의 CRUD 요청을 이 화면에서 바로 실행합니다.</p>
+        <p className="description">회원 생성에는 이름만 입력하고, ID로 단건 조회·수정·삭제할 수 있습니다.</p>
       </header>
       <section className="api-settings">
         <label htmlFor="api-url">API 기본 주소</label>
@@ -78,14 +78,15 @@ function App() {
         </div>
         <form onSubmit={createMember}>
           <label htmlFor="member-id">회원 ID</label>
-          <input id="member-id" inputMode="numeric" placeholder="예: 1" value={memberId} onChange={(event) => setMemberId(event.target.value)} />
+          <input id="member-id" inputMode="numeric" placeholder="수정·삭제·단건 조회 시 입력" value={memberId} onChange={(event) => setMemberId(event.target.value)} />
           <label htmlFor="member-name">이름</label>
-          <input id="member-name" placeholder="회원 이름" value={name} onChange={(event) => setName(event.target.value)} />
+          <input id="member-name" placeholder="예: 홍길동" value={name} onChange={(event) => setName(event.target.value)} />
           <div className="button-grid">
             <button type="submit" className="post" disabled={loading}>POST 생성</button>
             <button type="button" className="put" onClick={() => updateMember('PUT')} disabled={loading}>PUT 전체 수정</button>
             <button type="button" className="patch" onClick={() => updateMember('PATCH')} disabled={loading}>PATCH 부분 수정</button>
-            <button type="button" className="delete" onClick={deleteMember} disabled={loading}>DELETE 삭제</button></div>
+            <button type="button" className="delete" onClick={deleteMember} disabled={loading}>DELETE 삭제</button>
+          </div>
         </form>
       </section>
       <section className="read-section">

@@ -11,7 +11,7 @@ class Student {
 	int ban;		// ¹Ý
 	int score;
 
-	Student(String name, boolean isMale, int hak, int ban, int score) { 
+	Student(String name, boolean isMale, int hak, int ban, int score) {
 		this.name	= name;
 		this.isMale	= isMale;
 		this.hak	= hak;

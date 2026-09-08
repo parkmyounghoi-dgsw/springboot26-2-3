@@ -14,3 +14,5 @@ spring:
       hibernate:
         format_sql: true
         show_sql: true
+    # database 테이블 생성후 data.sql실행
+    defer-datasource-initialization: true

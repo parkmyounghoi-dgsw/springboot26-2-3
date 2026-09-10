@@ -6,6 +6,10 @@ spring:
     username: root
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
+  # data.sql 매번 실행해 달라..
+  sql:
+    init:
+      mode: always
   jpa:
     hibernate:
       ddl-auto: create
@@ -16,3 +20,6 @@ spring:
         show_sql: true
     # database 테이블 생성후 data.sql실행
     defer-datasource-initialization: true
+
+
+

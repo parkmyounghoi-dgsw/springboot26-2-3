@@ -4,16 +4,14 @@ import com.example.ex06.entity.Member;
 import com.example.ex06.repository.MemberRepository;
 import com.example.ex06.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("members")
 @RequiredArgsConstructor
+@CrossOrigin
 public class MemberController {
 
     // 2가지...@Autowird private fianl

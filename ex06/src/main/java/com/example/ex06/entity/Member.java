@@ -40,4 +40,7 @@ public class Member {
     private String name;
     private String email;
 
+    public void changeName(String name) {
+        this.name = name;
+    }
 }

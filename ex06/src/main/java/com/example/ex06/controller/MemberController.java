@@ -4,16 +4,14 @@ import com.example.ex06.entity.Member;
 import com.example.ex06.repository.MemberRepository;
 import com.example.ex06.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("members")
 @RequiredArgsConstructor
+@CrossOrigin // Cors 에러 해결입니다...
 public class MemberController {
 
     // 2가지...@Autowird private fianl
@@ -22,6 +20,13 @@ public class MemberController {
 //    public MemberController(MemberService memberService) {
 //        this.memberService = memberService;
 //    }
+
+
+    /*
+        ProductController - ProductService - ProductRepository - Product(Entity)
+        getMapping(products) -> product테이블 전체 내용 가져오기
+        getMapping({id}) -> product테이블에서 한개 가져오기
+     */
 
     // members 호출 하게 되면...
 //    @GetMapping("members")
@@ -33,7 +38,8 @@ public class MemberController {
     @GetMapping("/{id}")
     public Member findById(@PathVariable Long id){
         System.out.println("id = "+id);
-        return null;
+        Member member = memberService.findById(id);
+        return member;
     }
 
     // MemberController -> MemberSerivce -> MemberRepository ->Member

@@ -29,4 +29,22 @@ public class MemberService {
         Optional<Member> optionalMember =  memberRepository.findById(id);
         return optionalMember.get();
     }
+
+    public Member save(Member member) {
+        // insert into member values();
+        return memberRepository.save(member);
+    }
+
+    public Member update(Long id,Member member) throws Exception {
+        // select * from member where id = ?
+        // 해당하는 행이 있는지 조회...
+        Optional<Member> memberOptional = memberRepository.findById(id);
+        // 해당하는 행이 있으면.. update 구문 실행
+        if(memberOptional.isPresent()){
+            // update 구문을 실행을 해달라..
+            return memberRepository.save(member);
+        }else{
+            throw new Exception("수정할 내용이 없습니다.");
+        }
+    }
 }

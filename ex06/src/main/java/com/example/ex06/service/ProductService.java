@@ -19,13 +19,15 @@ public class ProductService {
     }
 
     public List<Product> findAll() {
-        // select * from member;
         return productRepository.findAll();
     }
 
     public Product findById(Long id) {
-        // select * from member where id = ?id;
         Optional<Product> optionalProduct =  productRepository.findById(id);
         return optionalProduct.get();
     }
+    public Product save(Product product) {
+        return productRepository.save(product);
+    }
+
 }

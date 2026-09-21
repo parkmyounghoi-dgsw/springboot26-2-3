@@ -1,7 +1,6 @@
 package com.example.ex06.controller;
 
 import com.example.ex06.entity.Member;
-import com.example.ex06.repository.MemberRepository;
 import com.example.ex06.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +29,28 @@ public class MemberController {
 
     @GetMapping("/{id}")
     public Member findById(@PathVariable Long id){
-        System.out.println("id = "+id);
-        return null;
+        return memberService.findById(id);
+    }
+
+    @PostMapping
+    public Member save(@RequestBody Member member){
+        return memberService.save(member);
+    }
+
+    /*
+        1. @RequestParam ?aa=10
+        2. @RequestBody json -> post
+        3. @PathVariable 1개를 주소를 가지고 오는겁니다.
+        2차 수행평가.. curd 만들 때 ..
+        put
+        localhost:8080/members/10
+        json{ name:'ㅇㅇㅇ',email:"bbb@naver.com" }
+     */
+    @PutMapping("{id}")
+    public Member update(
+            @PathVariable Long id,
+            @RequestBody Member member) throws Exception {
+        return memberService.update(id,member);
     }
 
     // MemberController -> MemberSerivce -> MemberRepository ->Member

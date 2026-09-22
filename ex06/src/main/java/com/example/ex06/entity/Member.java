@@ -1,13 +1,11 @@
 package com.example.ex06.entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 // entity 를 만드는것은 mysql Table 생성...
 
@@ -23,6 +21,8 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+//@Data
 public class Member {
 
 //기본생성자
@@ -35,12 +35,12 @@ public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(accessMode = Schema.AccessMode.READ_ONLY)
     private Long id;
 
+    @Schema(example = "홍길동")
     private String name;
+    @Schema(example = "aaa@naver.com")
     private String email;
 
-    public void changeName(String name) {
-        this.name = name;
-    }
 }

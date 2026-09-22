@@ -41,10 +41,22 @@ public class MemberService {
         Optional<Member> memberOptional = memberRepository.findById(id);
         // 해당하는 행이 있으면.. update 구문 실행
         if(memberOptional.isPresent()){
+            Member temp = memberOptional.get();
+            temp.setEmail(member.getEmail());
+            temp.setName(member.getName());
             // update 구문을 실행을 해달라..
-            return memberRepository.save(member);
+            return memberRepository.save(temp);
         }else{
-            throw new Exception("수정할 내용이 없습니다.");
+            throw new Exception("해당하는 id "+id+"가 없어서 수정할 내용이 없습니다.");
         }
+    }
+
+    public boolean deleteMember(Long id) throws Exception {
+        // select * from member where id = ?
+        Member member = memberRepository
+                .findById(id)
+                .orElseThrow(() -> new Exception("해당하는 id "+id+"가 없어서 삭제할 내용이 없습니다."));
+        memberRepository.delete(member);
+        return true;
     }
 }

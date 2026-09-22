@@ -2,6 +2,7 @@ package com.example.ex06.controller;
 
 import com.example.ex06.entity.Member;
 import com.example.ex06.service.MemberService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,11 +47,18 @@ public class MemberController {
         localhost:8080/members/10
         json{ name:'ㅇㅇㅇ',email:"bbb@naver.com" }
      */
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public Member update(
             @PathVariable Long id,
             @RequestBody Member member) throws Exception {
         return memberService.update(id,member);
+    }
+
+    @DeleteMapping("/{id}")
+    @Operation(summary = "회원을 삭제 합니다", description = "삭제하고싶은 id 입력하세요")
+    public boolean deleteMember(@PathVariable Long id) throws Exception {
+        boolean result = memberService.deleteMember(id);
+        return result;
     }
 
     // MemberController -> MemberSerivce -> MemberRepository ->Member

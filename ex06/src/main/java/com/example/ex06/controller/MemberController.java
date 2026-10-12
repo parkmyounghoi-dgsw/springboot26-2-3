@@ -14,6 +14,9 @@ import java.util.List;
 @CrossOrigin
 public class MemberController {
 
+
+
+
     // 2가지...@Autowird private fianl
     private final MemberService memberService;
 

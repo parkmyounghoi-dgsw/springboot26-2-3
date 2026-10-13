@@ -1,6 +1,7 @@
 package com.example.ex06;
 
 import com.example.ex06.controller.MemberController;
+import com.example.ex06.repository.MemberRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,6 +11,11 @@ class Ex06ApplicationTests {
 
     @Autowired
     MemberController memberController;
+
+    @Autowired
+    MemberRepository memberRepository;
+
+    // command + \ AI
 
     @BeforeAll
     static void beforeAll() {
@@ -37,6 +43,14 @@ class Ex06ApplicationTests {
     @DisplayName("컨텍스트 로드 테스트")
     void contextLoads() {
         System.out.println("잘되나");
+    }
+
+    @Test
+    void doA(){
+        int a = 10;
+        int b = 20;
+
+        Assertions.assertEquals(30,a+b);
     }
 
     @Test

@@ -1,8 +1,10 @@
 package com.example.ex06.controller;
 
+import com.example.ex06.dto.MemberRequestDto;
 import com.example.ex06.entity.Member;
 import com.example.ex06.service.MemberService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +15,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @CrossOrigin
 public class MemberController {
-
 
 
 
@@ -37,8 +38,9 @@ public class MemberController {
     }
 
     @PostMapping
-    public Member save(@RequestBody Member member){
-        return memberService.save(member);
+    public Member save(@RequestBody @Valid MemberRequestDto memberRequestDto){
+
+        return memberService.save(memberRequestDto);
     }
 
     /*

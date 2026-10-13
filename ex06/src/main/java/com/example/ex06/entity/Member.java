@@ -23,6 +23,7 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 //@Data
+@Builder
 public class Member {
 
 //기본생성자

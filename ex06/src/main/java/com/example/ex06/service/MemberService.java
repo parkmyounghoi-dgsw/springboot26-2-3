@@ -1,5 +1,6 @@
 package com.example.ex06.service;
 
+import com.example.ex06.dto.MemberRequestDto;
 import com.example.ex06.entity.Member;
 import com.example.ex06.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +31,14 @@ public class MemberService {
         return optionalMember.get();
     }
 
-    public Member save(Member member) {
+    public Member save(MemberRequestDto memberRequestDto) {
+//        Member member = new Member();
+        Member member = Member
+                        .builder()
+                        .name(memberRequestDto.getName())
+                        .email(memberRequestDto.getEmail())
+                        .build();
+
         // insert into member values();
         return memberRepository.save(member);
     }

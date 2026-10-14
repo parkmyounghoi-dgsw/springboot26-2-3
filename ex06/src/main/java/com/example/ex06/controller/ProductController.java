@@ -39,4 +39,18 @@ public class ProductController {
         System.out.println(product);
         return productService.save(product);
     }
+
+    @PutMapping("/{id}")
+    @Operation(summary = "상품 수정", description = "ID로 특정 상품 정보를 수정합니다.")
+    public Product update(@PathVariable Long id, @RequestBody Product product){
+        System.out.println("update id = " + id + ", product = " + product);
+        return productService.update(id, product);
+    }
+
+    @DeleteMapping("/{id}")
+    @Operation(summary = "상품 삭제", description = "ID로 특정 상품을 삭제합니다.")
+    public void delete(@PathVariable Long id){
+        System.out.println("delete id = " + id);
+        productService.delete(id);
+    }
 }

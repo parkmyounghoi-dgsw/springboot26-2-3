@@ -2,6 +2,8 @@ package hs.kr.pmh.suhang.controller;
 
 import hs.kr.pmh.suhang.domain.Member;
 import hs.kr.pmh.suhang.service.MemberService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,10 +22,14 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/members")
 @RequiredArgsConstructor
+@Tag(name = "Member", description = "회원 관리 API")
 public class MemberController {
 
     private final MemberService memberService;
 
+    // POST /api/members
+    // 요청 Body로 받은 회원 정보(이름, 이메일)를 저장하고, 저장된 회원 데이터를 반환한다.
+    @Operation(summary = "회원 등록", description = "이름과 이메일을 입력받아 새 회원을 등록합니다.")
     @PostMapping
     public ResponseEntity<Map<String, Object>> create(@RequestBody Member member) {
         Member created = memberService.create(member);
@@ -36,12 +42,18 @@ public class MemberController {
         }
     }
 
+    // GET /api/members
+    // 저장된 모든 회원 목록을 조회하여 반환한다.
+    @Operation(summary = "전체 회원 조회", description = "저장된 모든 회원 목록을 반환합니다.")
     @GetMapping
     public ResponseEntity<Map<String, Object>> findAll() {
         List<Member> members = memberService.findAll();
         return ResponseEntity.ok(Map.of("result", "성공", "data", members));
     }
 
+    // GET /api/members/{id}
+    // 경로 변수로 받은 ID에 해당하는 회원 정보를 조회하여 반환한다.
+    @Operation(summary = "회원 단건 조회", description = "ID로 특정 회원 정보를 조회합니다.")
     @GetMapping("/{id}")
     public ResponseEntity<Map<String, Object>> findById(@PathVariable Long id) {
         Member member = memberService.findById(id);
@@ -53,6 +65,9 @@ public class MemberController {
         }
     }
 
+    // PUT /api/members/{id}
+    // 경로 변수로 받은 ID에 해당하는 회원의 이름과 이메일을 수정하고, 수정된 회원 데이터를 반환한다.
+    @Operation(summary = "회원 정보 수정", description = "ID로 특정 회원의 이름과 이메일을 수정합니다.")
     @PutMapping("/{id}")
     public ResponseEntity<Map<String, Object>> update(@PathVariable Long id, @RequestBody Member member) {
         Member updated = memberService.update(id, member);
@@ -64,6 +79,9 @@ public class MemberController {
         }
     }
 
+    // DELETE /api/members/{id}
+    // 경로 변수로 받은 ID에 해당하는 회원을 삭제하고, 성공 여부를 반환한다.
+    @Operation(summary = "회원 삭제", description = "ID로 특정 회원을 삭제합니다.")
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, Object>> delete(@PathVariable Long id) {
         if (memberService.delete(id)) {

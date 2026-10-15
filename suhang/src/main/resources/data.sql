@@ -1,11 +1,11 @@
 INSERT INTO members (name, email) VALUES
-('세종대왕', 'sejong@dgsw.hs.kr'),
-('이순신', 'leesunsin@dgsw.hs.kr'),
-('안중근', 'ahnjunggeun@dgsw.hs.kr'),
-('유관순', 'yugwansun@dgsw.hs.kr'),
-('김구', 'kimgu@dgsw.hs.kr'),
-('장영실', 'jangyeongsil@dgsw.hs.kr'),
-('신사임당', 'sinsaimdang@dgsw.hs.kr'),
-('정약용', 'jeongyakyong@dgsw.hs.kr'),
-('윤봉길', 'yunbonggil@dgsw.hs.kr'),
-('허준', 'heojun@dgsw.hs.kr');
+('박민준', 'minjun.park@example.com'),
+('김서연', 'seoyeon.kim@example.com'),
+('이도현', 'dohyeon.lee@example.com'),
+('최지우', 'jiwoo.choi@example.com'),
+('정하은', 'haeun.jung@example.com'),
+('강시우', 'siwoo.kang@example.com'),
+('윤아린', 'arin.yoon@example.com'),
+('임준혁', 'junhyuk.lim@example.com'),
+('오수빈', 'subin.oh@example.com'),
+('한채원', 'chaewon.han@example.com');

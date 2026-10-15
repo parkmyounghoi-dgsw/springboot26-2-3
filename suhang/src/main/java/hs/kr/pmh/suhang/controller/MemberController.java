@@ -32,15 +32,6 @@ public class MemberController {
                         .body(Map.of("result", "실패", "message", "이름과 이메일은 필수입니다."))
                 : ResponseEntity.status(HttpStatus.CREATED)
                         .body(Map.of("result", "성공", "data", created));
-//        Map<String, Object> response = new HashMap<>();
-//        if (created == null) {
-//            response.put("result", "실패");
-//            response.put("message", "이름과 이메일은 필수입니다.");
-//            return ResponseEntity.badRequest().body(response);
-//        }
-//        response.put("result", "성공");
-//        response.put("data", created);
-//        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping

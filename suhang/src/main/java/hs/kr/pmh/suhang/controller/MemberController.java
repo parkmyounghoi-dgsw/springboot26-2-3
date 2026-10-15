@@ -27,11 +27,13 @@ public class MemberController {
     @PostMapping
     public ResponseEntity<Map<String, Object>> create(@RequestBody Member member) {
         Member created = memberService.create(member);
-        return created == null
-                ? ResponseEntity.badRequest()
-                        .body(Map.of("result", "실패", "message", "이름과 이메일은 필수입니다."))
-                : ResponseEntity.status(HttpStatus.CREATED)
-                        .body(Map.of("result", "성공", "data", created));
+        if (created == null) {
+            return ResponseEntity.badRequest()
+                    .body(Map.of("result", "실패", "message", "이름과 이메일은 필수입니다."));
+        } else {
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(Map.of("result", "성공", "data", created));
+        }
     }
 
     @GetMapping
@@ -43,28 +45,32 @@ public class MemberController {
     @GetMapping("/{id}")
     public ResponseEntity<Map<String, Object>> findById(@PathVariable Long id) {
         Member member = memberService.findById(id);
-        return member == null
-                ? ResponseEntity.status(HttpStatus.NOT_FOUND)
-                        .body(Map.of("result", "실패", "message", "회원을 찾을 수 없습니다."))
-                : ResponseEntity.ok(Map.of("result", "성공", "data", member));
+        if (member == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(Map.of("result", "실패", "message", "회원을 찾을 수 없습니다."));
+        } else {
+            return ResponseEntity.ok(Map.of("result", "성공", "data", member));
+        }
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Map<String, Object>> update(@PathVariable Long id, @RequestBody Member member) {
         Member updated = memberService.update(id, member);
-        return updated == null
-                ? ResponseEntity.badRequest()
-                        .body(Map.of("result", "실패", "message", "회원 정보를 찾을 수 없거나 이름 또는 이메일이 입력되지 않았습니다."))
-                : ResponseEntity.ok(Map.of("result", "성공", "data", updated));
+        if (updated == null) {
+            return ResponseEntity.badRequest()
+                    .body(Map.of("result", "실패", "message", "회원 정보를 찾을 수 없거나 이름 또는 이메일이 입력되지 않았습니다."));
+        } else {
+            return ResponseEntity.ok(Map.of("result", "성공", "data", updated));
+        }
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, Object>> delete(@PathVariable Long id) {
-        return memberService.delete(id)
-                ? ResponseEntity.ok(Map.of("result", "성공"))
-                : ResponseEntity.status(HttpStatus.NOT_FOUND)
-                        .body(Map.of("result", "실패", "message", "회원을 찾을 수 없습니다."));
+        if (memberService.delete(id)) {
+            return ResponseEntity.ok(Map.of("result", "성공"));
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(Map.of("result", "실패", "message", "회원을 찾을 수 없습니다."));
+        }
     }
-
-
 }

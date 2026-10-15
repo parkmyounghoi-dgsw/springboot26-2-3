@@ -35,7 +35,11 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public Member update(Long id, Member member) {
         Member existing = memberRepository.findById(id).orElse(null);
-        if (existing == null || !StringUtils.hasText(member.getName()) || !StringUtils.hasText(member.getEmail())) {
+        if (existing == null) {
+            return null;
+        } else if (!StringUtils.hasText(member.getName())) {
+            return null;
+        } else if (!StringUtils.hasText(member.getEmail())) {
             return null;
         }
         existing.update(member.getName(), member.getEmail());

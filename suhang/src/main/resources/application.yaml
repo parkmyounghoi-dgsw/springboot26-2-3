@@ -13,6 +13,7 @@ spring:
     defer-datasource-initialization: true
     hibernate:
       ddl-auto: create
+
   h2:
     console:
       enabled: true

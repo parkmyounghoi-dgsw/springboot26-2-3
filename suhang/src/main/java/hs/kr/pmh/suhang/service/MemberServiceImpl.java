@@ -55,4 +55,8 @@ public class MemberServiceImpl implements MemberService {
         return false;
     }
 
+    // entityManager.contains
+    public void test(){
+
+    }
 }

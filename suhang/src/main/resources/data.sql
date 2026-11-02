@@ -1,11 +1,10 @@
-INSERT INTO members (name, email) VALUES
-('박민준', 'minjun.park@example.com'),
-('김서연', 'seoyeon.kim@example.com'),
-('이도현', 'dohyeon.lee@example.com'),
-('최지우', 'jiwoo.choi@example.com'),
-('정하은', 'haeun.jung@example.com'),
-('강시우', 'siwoo.kang@example.com'),
-('윤아린', 'arin.yoon@example.com'),
-('임준혁', 'junhyuk.lim@example.com'),
-('오수빈', 'subin.oh@example.com'),
-('한채원', 'chaewon.han@example.com');
+INSERT INTO members (id, name, email) VALUES (NEXT VALUE FOR member_seq, '홍길동', 'minjun.park@example.com');
+INSERT INTO members (id, name, email) VALUES (NEXT VALUE FOR member_seq, '김길동', 'seoyeon.kim@example.com');
+INSERT INTO members (id, name, email) VALUES (NEXT VALUE FOR member_seq, '박길동', 'dohyeon.lee@example.com');
+INSERT INTO members (id, name, email) VALUES (NEXT VALUE FOR member_seq, '이길동', 'jiwoo.choi@example.com');
+INSERT INTO members (id, name, email) VALUES (NEXT VALUE FOR member_seq, '정하은', 'haeun.jung@example.com');
+INSERT INTO members (id, name, email) VALUES (NEXT VALUE FOR member_seq, '강시우', 'siwoo.kang@example.com');
+INSERT INTO members (id, name, email) VALUES (NEXT VALUE FOR member_seq, '윤아린', 'arin.yoon@example.com');
+INSERT INTO members (id, name, email) VALUES (NEXT VALUE FOR member_seq, '임준혁', 'junhyuk.lim@example.com');
+INSERT INTO members (id, name, email) VALUES (NEXT VALUE FOR member_seq, '오수빈', 'subin.oh@example.com');
+INSERT INTO members (id, name, email) VALUES (NEXT VALUE FOR member_seq, '한채원', 'chaewon.han@example.com');

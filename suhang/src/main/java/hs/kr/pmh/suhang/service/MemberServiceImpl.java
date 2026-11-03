@@ -2,7 +2,11 @@ package hs.kr.pmh.suhang.service;
 
 import hs.kr.pmh.suhang.domain.Member;
 import hs.kr.pmh.suhang.repository.MemberRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -13,6 +17,9 @@ import java.util.List;
 public class MemberServiceImpl implements MemberService {
 
     private final MemberRepository memberRepository;
+//    @Autowired
+//    @PersistenceContext
+    private final EntityManager entityManager;
 
     @Override
     public Member create(Member member) {
@@ -56,7 +63,16 @@ public class MemberServiceImpl implements MemberService {
     }
 
     // entityManager.contains
-    public void test(){
+    // 쓰기 지연
+    @Transactional
+    public void firstCache(){
+        entityManager.persist(new Member("쓰기 지연1","abc1@naver.com"));
+        entityManager.persist(new Member("쓰기 지연2","abc2@naver.com"));
 
+        System.out.println("insert 시작 ");
+        entityManager.flush();
+        System.out.println("insert 끝");
+
+        throw new RuntimeException("test");
     }
 }

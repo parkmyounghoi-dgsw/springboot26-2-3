@@ -16,5 +16,5 @@ public interface MemberService {
 
     boolean delete(Long id);
 
-    void test();
+    void firstCache();
 }

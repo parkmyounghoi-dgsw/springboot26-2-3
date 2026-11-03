@@ -91,4 +91,10 @@ public class MemberController {
                     .body(Map.of("result", "실패", "message", "회원을 찾을 수 없습니다."));
         }
     }
+
+    @GetMapping("firstCache")
+    public ResponseEntity<String> firstCache() {
+        memberService.firstCache();
+        return ResponseEntity.ok("firstCache");
+    }
 }

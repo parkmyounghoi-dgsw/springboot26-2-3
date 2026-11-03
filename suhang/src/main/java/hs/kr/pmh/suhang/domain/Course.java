@@ -40,4 +40,20 @@ public class Course {
         this.rating = rating;
         this.description = description;
     }
+
+    // PUT: 전체 수정 (모든 필드 교체)
+    public void update(String name, String category, int rating, String description) {
+        this.name = name;
+        this.category = category;
+        this.rating = rating;
+        this.description = description;
+    }
+
+    // PATCH: 부분 수정 (null이 아닌 필드만 반영)
+    public void patch(String name, String category, Integer rating, String description) {
+        if (name != null && !name.isBlank())        this.name = name;
+        if (category != null && !category.isBlank()) this.category = category;
+        if (rating != null)                          this.rating = rating;
+        if (description != null && !description.isBlank()) this.description = description;
+    }
 }
